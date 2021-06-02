@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  // 用构造函数创建一个对象
+  function Person(){
+
+  }
+  // 在这里 Person 是构造函数  person是 new出来的一个实例对象
+ /*  let person = new Person()
+  person.name = 'CoderChen'
+  console.log(person.name) 
+  // CoderChen */
+
+  Person.prototype.name = 'CoderChen'
+  let person1 = new Person()
+  console.log(Person.prototype.__proto__)  //构造函数的prototype的 proto 指向 Object
+  console.log(Person.prototype) 
+  console.log(Person.prototype.constructor)  //构造函数的prototype的构造器就是 构造函数本身
+  console.log(person1.__proto__)
+
+  person1.name = 'JK'
+  console.log(person1.name)
+  //当读取实例的属性时，如果找不到，
+  //就会查找与对象关联的原型中的属性，如果还查不到，就去找原型的原型，一直找到最顶层为止
+  //在这里 我们往构造函数的原型上添加了一个 name 的属性 属性值为 CoderChen
+  delete person1.name   //现在删除 实例对象的 name JK
+  console.log(person1.name)  // CoderChen  实例对象上的 name 值被删了 它就会向上找到他的原型上的属性
+
+  // 补充说明 构造器
+  //实例对象 person1的构造器本身没有 会向上查找到 Person原型里面的 constructor
+  console.log(person1.__proto__.constructor)
+  console.log(person1.constructor === Person.prototype.constructor)
+</script>
