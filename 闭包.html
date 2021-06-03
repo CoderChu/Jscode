@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>闭包分析</h1>
+</body>
+</html>
+<script>
+  var a = 1;
+  function f1(){
+    console.log(a)
+  }
+  f1();
+  // a 是全局变量 对于 函数 f1来说 是一个可以自由访问的变量
+  //其实整个 js函数都是闭包 但是我们会单独构建自己的闭包函数
+
+  function f2(){
+    let b = '你好呀'
+    function f3(){
+      return console.log(b)
+    }
+    return f3()  // 对于 f3来说 b 就是可以自由访问的变量
+  }
+  let c = f2();
+
+  //必须了解的题目
+  var data = [];
+  for(var i=0;i<3;i++){
+    data[i] = function(){
+      console.log(i)
+    }
+  }
+  data[0]();
+  data[1]();
+  data[2]();
+  //结果都是3
+  /* 分析   */
+</script>

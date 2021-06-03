@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>这只是测试文件</h2>
+</body>
+</html>
+<script>
+
+// call能调用不同对象里面的方法
+
+/* let f1 = {
+  getNum(){
+    // console.log(this.num1+this.num2)
+  }
+}
+
+let f2 = {
+  num1:20,
+  num2:30,
+  say(){
+    console.log('哈喽')
+  }
+}
+f1.getNum.call(f2.say()) */
+
+
+function createObj(o) {
+    function F(){}
+    F.prototype = o;
+    return new F();
+}
+var person = {
+    name: 'kevin',
+    friends: ['daisy', 'kelly']
+}
+
+var person1 = createObj(person);
+var person2 = createObj(person);
+
+console.log(person1.name,'p1设置name之前')
+person1.name = 'person1';
+console.log(person1.name,'p1设置name之后')
+console.log(person2.name); // kevin
+
+person1.friends.push('taylor');
+console.log(person2.friends); // ["daisy", "kelly", "taylor"]
+
+/* 我们可以如何去理解呢 相当于我 new出来两个实例 p1 p2 
+  他们都有 person上的  name friends 两个属性  但是
+  p1.name = ''  这一步 =  是赋值操作 相当于给 p1 添加!!! 了一个 name属性并赋值 
+  并没有改变 原型上的 name 
+  然而当 p1.friends.push('') 这个操作的时候  我没有为 p1 添加叫做 friends 的东西
+  那么它会顺着 p1 去找它的原型 找到了原型上的 friends  并push 因此改变了原型上的东西！！！
+   */
+</script>
