@@ -1,0 +1,54 @@
+<template>
+  <div>
+    <h2>hello</h2>
+    <p class="txt" @click="toPage()">点击就送屠龙宝刀</p>
+    <button @click="toHome()">跳转</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HelloWorld',
+  data () {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  methods:{
+    toPage(){
+      console.log('111')
+    },
+    toHome(){
+      window.localStorage.setItem('username','小芳')
+      this.$router.push({
+        path:'/home'
+      })
+    }
+  }
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+.txt{
+  color:red;
+  text-decoration: underline;
+}
+.txt:hover{
+  cursor: pointer;
+}
+</style>
