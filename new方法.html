@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+  function foo(){};
+  function new2(){
+    var ele = Object.create(foo.prototype);
+    var kele = foo.call(this);
+    if(typeof ele === "object"){
+      return ele 
+    }else{
+      return kele
+    }
+  }
+</script>
