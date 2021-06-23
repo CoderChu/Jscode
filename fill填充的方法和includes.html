@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script>
+ let arr = [0,1,2,3,4];
+ /* arr.fill("a")  
+ console.log(arr)  //这会吧所有都都替换成 a */
+ 
+ //从索引第四位开始填充  后面没了 就只会变最后一个
+ // arr.fill("a",4)  
+ 
+ 
+ // 从第一个索引位置开始 到索引的第三个 都替换成 a
+ arr.fill("a",1,3)
+ console.log(arr)
+ 
+ //includes  判断数组里面是否包含某一个值
+ let arr1 = [1,0,'a',1,2,3,4]
+ 
+ let res1 = arr.includes("a");
+ console.log(res1)  //true 
+ 
+ // 从第三个下标开始检查 一直到最后一位 就没有 a 了
+ let res2 = arr.includes("a",3)
+ // arr.includes(c,1,2)  甚至还能设置范围
+ console.log(res2)
+</script>
