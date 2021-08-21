@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<input type="text" id="ipt">
+	</body>
+</html>
+
+<script>
+	let ipt = document.getElementById('ipt')
+	console.log(ipt)
+	let t = null;
+	ipt.oninput = function (){
+		if( t !== null){
+			clearTimeout( t )
+		}
+		t = setTimeout(()=>{
+			console.log(this.value)
+		}, 500)
+	}
+	
+</script>
