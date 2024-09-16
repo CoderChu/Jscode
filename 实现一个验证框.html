@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实现一个简易的验证框</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .loginBox {
+      position: fixed;
+    }
+
+    #checkPage {
+      height: 100vh;
+      background-color: #ccc;
+      position: relative;
+      z-index: 10;
+      display: none;
+      opacity: 0.4;
+    }
+
+    .box {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 2px solid red;
+      left: 50%;
+      top: 50%;
+      margin-left: -150px;
+      margin-top: -150px;
+    }
+
+    /* #checkPage .show{
+      display: block;
+    } */
+  </style>
+</head>
+
+<body>
+  <div class="loginBox">
+    <button class="btn">模拟登录按钮</button>
+  </div>
+  <div id="checkPage">
+    <div class="box">
+      <div>
+        数字<span id="num1"></span>
+      </div>
+      加上
+      <div>
+        数字<span id="num2"></span>
+      </div>
+      <div>
+        <input type="text" id="ipt"><button id="close">输入结果</button>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+<script>
+  let num = 0;
+  let btn = document.getElementsByClassName('btn')[0]
+  let checkPage = document.getElementById('checkPage')
+  let ipt = document.getElementById('ipt')
+  let num1 = document.getElementById('num1')
+  let num2 = document.getElementById('num2')
+  let arr = [
+    {
+      a: 1,
+      b: 2,
+      c: 3
+    },
+    {
+      a: 10,
+      b: 20,
+      c: 30
+    },
+    {
+      a: 100,
+      b: 200,
+      c: 300
+    }
+  ]
+  let newArr = []
+  btn.onclick = function () {
+    num++
+    if (num >= 5) {
+      checkPage.style.display = 'block'
+      let rNum = parseInt(Math.random(arr.length - 0) * arr.length + 0)
+      newArr.push(arr[rNum])
+      num1.innerText = newArr[0].a
+      num2.innerText = newArr[0].b
+    }
+  }
+
+  // 输入正确结果的情况下关闭页面
+  document.getElementById('close').onclick = function () {
+    if (ipt.value == newArr[0].c) {
+      console.log('验证成功', ipt.value)
+      checkPage.style.display = 'none'
+      num1.innerText = ''
+      num2.innerText = ''
+      newArr.pop()
+    } else {
+      console.log('验证错误')
+    }
+    ipt.value = ''
+  }
+</script>

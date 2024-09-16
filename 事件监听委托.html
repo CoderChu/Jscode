@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #dv1 {
+      width: 200px;
+      height: 200px;
+      background-color: red;
+    }
+
+    #dv2 {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(13, 0, 255);
+    }
+
+    #ul {
+      width: 100px;
+      height: 200px;
+    }
+
+    .red {
+      color: red
+    }
+  </style>
+</head>
+
+<body>
+  <div id="dv1">
+    <div id="dv2"></div>
+  </div>
+
+  <ul id="ul">
+    <li class="haha red">1</li>
+    <li class="haha">2</li>
+    <li class="haha">3</li>
+    <li class="haha">4</li>
+  </ul>
+</body>
+
+</html>
+<script>
+  let dv1 = document.getElementById('dv1')
+  dv1.addEventListener('click', function () {
+    console.log('我是父盒子的事件')
+  })
+
+  let dv2 = document.getElementById('dv2')
+  dv2.addEventListener('click', function (e) {
+    //阻止事件冒泡
+    e.cancelBubble = true
+    console.log('我是子盒子的事件')
+  })
+
+  let ul = document.getElementById('ul')
+  ul.onclick = function (e) {
+    if (e.target.nodeName.toLowerCase() == 'li') {
+      let li = e.target
+      removeClassName('haha')
+      li.classList.add('red')
+    }
+  }
+
+  function removeClassName(tagName) {
+    let lis = document.getElementsByClassName(tagName)
+    for (let i = 0; i < lis.length; i++) {
+      if (lis[i].className.indexOf('red') != -1) {
+        lis[i].classList.remove('red')
+      }
+    }
+  }
+
+  // let lis = document.getElementsByTagName('li')
+  // console.log(lis)
+  // for (let i = 0; i < lis.length; i++) {
+  //   lis[i].setAttribute('index', i)
+  //   lis[i].onclick = function () {
+  //     for (let j = 0; j < lis.length; j++) {
+  //       lis[j].classList.remove('red')
+  //     }
+  //     let num = this.getAttribute('index')
+  //     console.log(num)
+  //     lis[num].classList.add('red')
+  //   }
+  // }
+  
+  // function removeTag(tagName) {
+  //   let lis = document.getElementsByClassName(tagName)
+  //   for (let i = 0; i < lis.length; i++) {
+  //     lis[i].setAttribute('index', i)
+  //     lis[i].onclick = function () {
+  //       for (let j = 0; j < lis.length; j++) {
+  //         lis[j].classList.remove('red')
+  //       }
+  //       let num = this.getAttribute('index')
+  //       console.log(num)
+  //       lis[num].classList.add('red')
+  //     }
+  //   }
+  // }
+  // removeTag('haha')
+</script>

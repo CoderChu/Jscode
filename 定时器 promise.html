@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
+<script>
+
+/* 定时器是宏任务 但是也是异步的  promise对象本身是同步的 但是链式调用却是异步的
+  所以promise执行是在 定时器之前的
+
+*/
+
+setTimeout(function(){
+  console.log('111')
+},0)
+
+new Promise((resolve,reject)=>{
+  resolve()
+}).then((res)=>{
+  console.log('promise')
+})
+
+
+</script>
